@@ -33,7 +33,8 @@ export const GetAllWithSprites = async () => {
 export const GetDetails = async id => {
 	try {
 		const pokemonDetails = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`);
-		console.log(pokemonDetails.data);
+		return pokemonDetails.data;
+		// console.log(pokemonDetails.data);
 	} catch (error) {
 		console.error("Error fetching pokemon data: ", error);
 		return [];

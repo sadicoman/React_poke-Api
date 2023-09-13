@@ -2,10 +2,11 @@ import { useEffect, useState } from "react";
 import { GetAllWithSprites, GetDetails } from "../../api/api";
 
 import "./home.scss";
+import Details from "../detials/details";
 
 const Home = () => {
 	const [pokemonList, setPokemonList] = useState([]);
-    const [selectedPokemon, setSelectedPokemon] = useState('');
+	const [selectedPokemon, setSelectedPokemon] = useState("");
 
 	const getAll = async () => {
 		try {
@@ -16,10 +17,10 @@ const Home = () => {
 		}
 	};
 
-    const handleSelection = (e, id) => {
-			// console.log(GetDetails(id));
-            setSelectedPokemon(id);
-		};
+	const handleSelection = (e, id) => {
+		// console.log(GetDetails(id));
+		setSelectedPokemon(id);
+	};
 
 	useEffect(() => {
 		pokemonList.length === 0 ? getAll() : null;
@@ -28,14 +29,24 @@ const Home = () => {
 	console.log(GetAllWithSprites());
 
 	return (
-		<section className="pokemon__container">
-			{pokemonList.map(poke => (
-				<div key={poke.id} className="pokemon__display">
-					<h2>{poke.name}</h2>
-					<img src={poke.sprite} alt={poke.name} onClick={(e) => handleSelection(e, poke.id)} />
-				</div>
-			))}
-		</section>
+		<>
+			{selectedPokemon !== "" ? (
+				<Details pokemon={selectedPokemon} setPokemon={setSelectedPokemon}/>
+			) : (
+				<section className="pokemon__container">
+					{pokemonList.map(poke => (
+						<div key={poke.id} className="pokemon__display">
+							<h2>{poke.name}</h2>
+							<img
+								src={poke.sprite}
+								alt={poke.name}
+								onClick={e => handleSelection(e, poke.id)}
+							/>
+						</div>
+					))}
+				</section>
+			)}
+		</>
 	);
 };
 
