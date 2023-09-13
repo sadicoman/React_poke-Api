@@ -1,17 +1,27 @@
 import { useEffect, useState } from "react";
-import { GetAllWithSprites, GetDetails } from "../../api/api";
-
+import { GetAllWithSprites, GetDetails, GetSearchedPokemon } from "../../api/api";
 import "./home.scss";
 import Details from "../detials/details";
+import Search from "../search/search";
 
 const Home = () => {
 	const [pokemonList, setPokemonList] = useState([]);
 	const [selectedPokemon, setSelectedPokemon] = useState("");
+	const [searchValue, setSearchValue] = useState(null);
 
 	const getAll = async () => {
 		try {
 			const pokemonData = await GetAllWithSprites();
 			setPokemonList(pokemonData);
+		} catch (error) {
+			console.error(error);
+		}
+	};
+
+	const getSearched = async () => {
+		try {
+			const pokemonData = await GetSearchedPokemon(searchValue);
+			setPokemonList([pokemonData]);
 		} catch (error) {
 			console.error(error);
 		}
@@ -23,15 +33,20 @@ const Home = () => {
 	};
 
 	useEffect(() => {
-		pokemonList.length === 0 ? getAll() : null;
-	}, [pokemonList]);
+		if (searchValue === null) {
+			getAll();
+		} else {
+			getSearched(searchValue);
+		}
+	}, [searchValue]);
 
 	console.log(GetAllWithSprites());
 
 	return (
 		<>
+			<Search setSearch={setSearchValue} setPokemon={setSelectedPokemon} />
 			{selectedPokemon !== "" ? (
-				<Details pokemon={selectedPokemon} setPokemon={setSelectedPokemon}/>
+				<Details pokemon={selectedPokemon} setPokemon={setSelectedPokemon} />
 			) : (
 				<section className="pokemon__container">
 					{pokemonList.map(poke => (

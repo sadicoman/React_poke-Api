@@ -2,6 +2,8 @@ import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 import { GetDetails } from "../../api/api";
 
+import "./details.scss";
+
 const Details = props => {
 	const { pokemon, setPokemon } = props;
 	const [pokemonDetails, setPokemonDetails] = useState([]);
@@ -25,10 +27,10 @@ const Details = props => {
 	}, [pokemon]);
 
 	return (
-		<div>
+		<div className="details__container">
 			<button onClick={handleSelection}>Back th the list</button>
 			{pokemonDetails.map(poke => (
-				<div key={poke.id}>
+				<div className="details__display" key={poke.id}>
 					<h2>{poke.name}</h2>
 					<img src={poke.sprites.front_default} alt={poke.name} />
 					<p>{poke.weight}</p>
