@@ -41,12 +41,12 @@ export const GetDetails = async id => {
 	}
 };
 
-export const GetSearchPokemon = async (name) => {
+export const GetSearchedPokemon = async name => {
 	try {
 		const pokemonDetails = await axios.get(`https://pokeapi.co/api/v2/pokemon/${name}`);
 		const id = pokemonDetails.data.id;
-		const pName = pokemonDetails.name;
-		const spriteDate = pokemonDetails.data.sprite.front_default;
+		const pName = pokemonDetails.data.name;
+		const spriteDate = pokemonDetails.data.sprites.front_default;
 		return { id: id, name: pName, sprite: spriteDate };
 	} catch (error) {
 		console.error(error);

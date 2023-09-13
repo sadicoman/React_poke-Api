@@ -7,8 +7,8 @@ const Search = props => {
 
 	const handleSubmit = e => {
 		e.preventDefault();
-
 		setSearch(searchValue);
+        
 	};
 	const handleInputChange = e => {
 		setSearchValue(e.target.value);
