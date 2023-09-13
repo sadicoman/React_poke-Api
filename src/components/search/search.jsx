@@ -8,7 +8,7 @@ const Search = props => {
 	const handleSubmit = e => {
 		e.preventDefault();
 		setSearch(searchValue);
-        
+		setSearchValue(""); // Réinitialiser l'input
 	};
 	const handleInputChange = e => {
 		setSearchValue(e.target.value);
@@ -21,6 +21,7 @@ const Search = props => {
 				<input
 					type="text"
 					placeholder="Search pokemon..."
+					value={searchValue} // Ajout 
 					onChange={handleInputChange}
 					className="search__input"
 				/>

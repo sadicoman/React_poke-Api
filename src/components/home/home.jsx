@@ -33,7 +33,7 @@ const Home = () => {
 	};
 
 	useEffect(() => {
-		if (searchValue === null) {
+		if (searchValue === "" || searchValue === null) {
 			getAll();
 		} else {
 			getSearched(searchValue);
