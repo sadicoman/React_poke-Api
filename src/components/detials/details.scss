@@ -42,10 +42,167 @@
 		display: flex;
 		flex-direction: column;
 
+		.details__top {
+			display: flex;
+			font-family: "Yanone Kaffeesatz", sans-serif;
+
+			p {
+				margin: 1rem;
+				padding: 0;
+			}
+		}
+		.details__types {
+			list-style: none;
+			display: flex;
+			gap: 5px;
+			flex-direction: row;
+			justify-content: flex-start;
+			justify-content: center;
+			align-items: center;
+			margin: 0;
+			padding: 0;
+
+			li {
+				border-radius: 10px;
+				padding: 6px 8px;
+				background-color: rgb(0, 0, 0);
+				color: rgba(255, 255, 255, 1);
+				font-size: 14px;
+			}
+			.type-normal {
+				background-color: #a8a878;
+				color: white;
+			}
+			.type-fighting {
+				background-color: #c03028;
+				color: white;
+			}
+			.type-flying {
+				background-color: #a890f0;
+				color: white;
+			}
+			.type-poison {
+				background-color: #a040a0;
+				color: white;
+			}
+			.type-ground {
+				background-color: #e0c068;
+				color: white;
+			}
+			.type-rock {
+				background-color: #b8a038;
+				color: white;
+			}
+			.type-bug {
+				background-color: #a8b820;
+				color: white;
+			}
+			.type-ghost {
+				background-color: #705898;
+				color: white;
+			}
+			.type-steel {
+				background-color: #b8b8d0;
+				color: black;
+			}
+			.type-fire {
+				background-color: #f08030;
+				color: white;
+			}
+			.type-water {
+				background-color: #6890f0;
+				color: white;
+			}
+			.type-grass {
+				background-color: #78c850;
+				color: white;
+			}
+			.type-electric {
+				background-color: #f8d030;
+				color: black;
+			}
+			.type-psychic {
+				background-color: #f85888;
+				color: white;
+			}
+			.type-ice {
+				background-color: #98d8d8;
+				color: black;
+			}
+			.type-dragon {
+				background-color: #7038f8;
+				color: white;
+			}
+			.type-dark {
+				background-color: #705848;
+				color: white;
+			}
+			.type-fairy {
+				background-color: #ee99ac;
+				color: black;
+			}
+		}
+
+		.details__attaque {
+			list-style: none;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			margin: 1rem;
+			padding: 0;
+
+			li {
+				border-bottom: #000 2px solid;
+				width: 90%;
+				text-align: center;
+				padding: 1rem;
+			}
+		}
+
+		.details__banner {
+			display: flex;
+			color: #000;
+			background-color: #b4940d;
+			border-radius: 5px;
+			border: 2px #fff883 solid;
+			font-family: "Oswald", sans-serif;
+			font-style: oblique;
+			margin: 0 auto;
+			position: relative;
+			text-align: center;
+			bottom: 10px;
+			width: 230px;
+			justify-content: space-around;
+			p {
+				font-size: 12px;
+				padding: 0;
+			}
+		}
+
+		.details__stats {
+			list-style: none;
+			padding: 0;
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+			padding: 1rem;
+			margin: 1rem;
+			border: #ffe164 1px solid;
+			border-style: outset;
+			font-size: 14px;
+
+			li {
+				padding-bottom: 1rem;
+			}
+			li:nth-last-child(-n + 2) {
+				padding-bottom: 0;
+			}
+		}
+
 		h2 {
 			color: #000;
 			display: inline-block;
-			font-family: "Yanone Kaffeesatz", sans-serif;
+			// font-family: "Yanone Kaffeesatz", sans-serif;
 			font-size: 25px;
 			font-weight: 700;
 			width: 50%;
@@ -61,7 +218,7 @@
 			padding-left: 20px;
 			width: 12rem;
 			align-self: center;
-			margin: 0rem 1rem;
+			margin: 0rem 1rem 2rem;
 		}
 		p {
 			padding: 1rem;

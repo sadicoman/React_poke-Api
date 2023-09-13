@@ -31,9 +31,41 @@ const Details = props => {
 			<button onClick={handleSelection}>Back th the list</button>
 			{pokemonDetails.map(poke => (
 				<div className="details__display" key={poke.id}>
-					<h2>{poke.name}</h2>
+					<div className="details__top">
+						<h2>{poke.name}</h2>
+						{poke.stats
+							.filter(stat => stat.stat.name === "hp")
+							.map((stat, index) => (
+								<p key={index}>{stat.base_stat} HP</p>
+							))}
+					</div>
 					<img src={poke.sprites.front_default} alt={poke.name} />
-					<p>{poke.weight}</p>
+					<div className="details__banner">
+						<p>Weight : {poke.weight}kg</p>
+						<p>|</p>
+						<p>Height: {poke.height}cm</p>
+					</div>
+					<ul className="details__types">
+						{poke.types.map(type => (
+							<li key={type.type.name} className={`type-${type.type.name}`}>
+								{type.type.name}
+							</li>
+						))}
+					</ul>
+					<ul className="details__attaque">
+						{poke.moves.slice(0, 4).map(move => (
+							<li key={move.move.name}>{`${move.move.name.toUpperCase()}`}</li>
+						))}
+					</ul>
+					<ul className="details__stats">
+						{poke.stats
+							.filter(stat => stat.stat.name !== "hp")
+							.map(stat => (
+								<li key={stat.stat.name}>{`${stat.stat.name.toUpperCase()}: ${
+									stat.base_stat
+								}`}</li>
+							))}
+					</ul>
 				</div>
 			))}
 		</div>
